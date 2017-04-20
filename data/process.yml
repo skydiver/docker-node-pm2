@@ -1,0 +1,11 @@
+apps:
+
+  - name     : 'node_app1'
+    script   : '/SERVER/node_app1/app.js'
+    cwd      : '/SERVER/node_app1/'
+
+  - name     : 'node_app2'
+    script   : '/SERVER/node_app2/app.js'
+    cwd      : '/SERVER/node_app2/'
+    env    :
+      NODE_ENV: production
