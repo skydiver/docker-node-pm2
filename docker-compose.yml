@@ -1,0 +1,27 @@
+version: '2'
+services:
+
+    #####################
+    # NGINX
+    #####################
+    nginx:
+        container_name: NODE_nginx
+        image         : nginx:stable
+        links         :
+            - node
+        volumes       :
+            - ./config/nginx/conf.d/:/etc/nginx/conf.d/
+        ports:
+            - 80:80
+            - 443:443
+
+    #####################
+    # NODE
+    #####################
+    node:
+        container_name: NODE_apps
+        build         : ./build/node/
+        depends_on    :
+            - nginx
+        volumes       :
+            - ./data/:/SERVER/
