@@ -7,8 +7,6 @@ services:
     nginx:
         container_name: NODE_nginx
         image         : nginx:stable
-        links         :
-            - node
         volumes       :
             - ./config/nginx/conf.d/:/etc/nginx/conf.d/
         ports:
@@ -21,6 +19,8 @@ services:
     node:
         container_name: NODE_apps
         build         : ./build/node/
+        links         :
+            - nginx
         depends_on    :
             - nginx
         volumes       :
